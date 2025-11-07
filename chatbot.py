@@ -22,9 +22,6 @@ except Exception as e:
     QA_PAIRS = []
 
 def get_chatbot_response(user_query: str) -> str:
-    """
-    Finds the best answer using cosine similarity on sentence embeddings.
-    """
     if SIM_MODEL is None or not QA_PAIRS:
         return "The plant care knowledge base is currently unavailable."
 
