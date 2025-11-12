@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "Healthy": [
     "Your plant looks vibrant! Continue with standard watering and sunlight.",
@@ -133,3 +134,83 @@
     "Consider resistant varieties for long-term prevention."
   ]
 }
+=======
+{
+  "Healthy": [
+    "Your plant looks vibrant! Continue with standard watering and sunlight."
+  ],
+  "Late Blight": [
+    "Remove and destroy affected leaves immediately.",
+    "Apply a copper-based fungicide or a homemade Bordeaux mixture.",
+    "Improve air circulation around the plant."
+  ],
+  "Powdery Mildew": [
+    "Mix 1 tablespoon of baking soda and a few drops of liquid soap in 1 liter of water. Spray thoroughly.",
+    "Apply neem oil every 7 days."
+  ],
+  "Spider Mites": [
+    "Use a strong jet of water to physically dislodge the pests.",
+    "Apply insecticidal soap, focusing on the undersides of leaves."
+  ],
+  "Aphids": [
+    "Spray foliage with a mixture of water and mild dish soap (1 tsp per liter) to dislodge aphids.",
+    "Introduce natural predators like ladybugs or lacewings."
+  ],
+  "Bacterial Spot": [
+    "Remove infected leaves and avoid wetting foliage when watering.",
+    "Apply copper-based treatments and sanitize pruning tools between cuts."
+  ],
+  "Leaf Spot": [
+    "Remove and discard affected leaves to reduce spread.",
+    "Avoid overhead watering and improve drainage around plants."
+  ],
+  "Rust": [
+    "Remove infected leaves and dispose of them away from the garden.",
+    "Spray with a baking soda solution (1 tbsp per liter) or use neem oil."
+  ],
+  "Blight (Early Blight)": [
+    "Practice crop rotation and remove plant debris from the soil.",
+    "Mulch to prevent soil splash and apply tomato-safe fungicide if needed."
+  ],
+  "Root Rot": [
+    "Stop watering and let the soil dry; repot into fresh, well-draining soil if roots are rotting.",
+    "Improve drainage and avoid waterlogged conditions."
+  ],
+  "Fusarium Wilt": [
+    "Remove and destroy heavily infected plants; use resistant varieties where possible.",
+    "Solarize the soil and avoid replanting susceptible crops in the same spot for a season."
+  ],
+  "Nutrient Deficiency (General)": [
+    "Add balanced compost or a slow-release organic fertilizer to the soil.",
+    "Perform a soil test to identify specific deficiencies (e.g., nitrogen, iron, magnesium)."
+  ],
+  "Nitrogen Deficiency": [
+    "Apply a nitrogen-rich organic fertilizer such as blood meal or composted manure.",
+    "Mulch with nitrogen-rich green materials (e.g., grass clippings)."
+  ],
+  "Iron Chlorosis": [
+    "Lower soil pH for iron-absorbing plants by adding elemental sulfur or organic matter like peat moss.",
+    "Use chelated iron as a foliar spray for quick correction."
+  ],
+  "Mosaic Virus": [
+    "Remove and destroy infected plants; control aphid vectors.",
+    "Sanitize tools and practice good hygiene to prevent spread."
+  ],
+  "Thrips": [
+    "Use sticky traps and spray insecticidal soap on affected areas.",
+    "Introduce predatory insects like minute pirate bugs where possible."
+  ],
+  "Whiteflies": [
+    "Use yellow sticky traps and spray with neem oil to control populations.",
+    "Remove heavily infested leaves and improve air circulation."
+  ],
+  "Scale Insects": [
+    "Gently remove scales with a cotton swab dipped in rubbing alcohol.",
+    "Apply horticultural oil to suffocate remaining pests."
+  ],
+  "Powdery Mildew (Severe)": [
+    "Prune to increase airflow and remove heavily infected tissue.",
+    "Apply milk spray (1 part milk to 9 parts water) weekly as a preventive treatment."
+  ]
+}
+>>>>>>> 97afc2203075cca1880a1ca8a74f6f5d337959e5
