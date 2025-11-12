@@ -1,0 +1,135 @@
+{
+  "Healthy": [
+    "Your plant looks vibrant! Continue with standard watering and sunlight.",
+    "Wipe leaves gently with a damp cloth to remove dust and improve photosynthesis.",
+    "Rotate your plant weekly for even sunlight exposure.",
+    "Fertilize once a month during the growing season for optimal health.",
+    "Monitor for early signs of pests or discoloration to prevent issues early."
+  ],
+  "Late Blight": [
+    "Remove and destroy affected leaves immediately.",
+    "Apply a copper-based fungicide or a homemade Bordeaux mixture.",
+    "Improve air circulation around the plant.",
+    "Avoid overhead watering and water only at the base of plants.",
+    "Use resistant plant varieties and rotate crops yearly to prevent recurrence."
+  ],
+  "Powdery Mildew": [
+    "Mix 1 tablespoon of baking soda and a few drops of liquid soap in 1 liter of water. Spray thoroughly.",
+    "Apply neem oil every 7 days.",
+    "Prune overcrowded branches to increase airflow.",
+    "Avoid watering late in the evening as moisture encourages fungal growth.",
+    "Ensure your plant gets adequate sunlight, as shaded, damp areas promote mildew."
+  ],
+  "Spider Mites": [
+    "Use a strong jet of water to physically dislodge the pests.",
+    "Apply insecticidal soap, focusing on the undersides of leaves.",
+    "Increase humidity by misting plants regularly, as spider mites thrive in dry air.",
+    "Introduce predatory mites like Phytoseiulus persimilis to control infestation.",
+    "Inspect leaves frequently and isolate infected plants if infestation spreads."
+  ],
+  "Aphids": [
+    "Spray foliage with a mixture of water and mild dish soap (1 tsp per liter) to dislodge aphids.",
+    "Introduce natural predators like ladybugs or lacewings.",
+    "Remove heavily infested leaves and prune affected stems.",
+    "Avoid over-fertilizing as excessive nitrogen promotes aphid growth.",
+    "Use neem oil or insecticidal sprays weekly until infestation subsides."
+  ],
+  "Bacterial Spot": [
+    "Remove infected leaves and avoid wetting foliage when watering.",
+    "Apply copper-based treatments and sanitize pruning tools between cuts.",
+    "Water early in the morning so leaves dry quickly during the day.",
+    "Avoid working with wet plants to minimize bacterial spread.",
+    "Plant disease-resistant varieties and rotate crops yearly."
+  ],
+  "Leaf Spot": [
+    "Remove and discard affected leaves to reduce spread.",
+    "Avoid overhead watering and improve drainage around plants.",
+    "Apply fungicides containing chlorothalonil or copper if symptoms worsen.",
+    "Ensure proper spacing between plants to improve airflow.",
+    "Clean up fallen leaves regularly to prevent reinfection."
+  ],
+  "Rust": [
+    "Remove infected leaves and dispose of them away from the garden.",
+    "Spray with a baking soda solution (1 tbsp per liter) or use neem oil.",
+    "Avoid wetting leaves during watering to prevent spore spread.",
+    "Use sulfur-based fungicides in severe cases.",
+    "Rotate crops and clean tools to prevent recurring infections."
+  ],
+  "Blight (Early Blight)": [
+    "Practice crop rotation and remove plant debris from the soil.",
+    "Mulch to prevent soil splash and apply tomato-safe fungicide if needed.",
+    "Avoid watering from above; direct water to the base of the plant.",
+    "Remove lower leaves as the plant grows to prevent soil contact.",
+    "Ensure proper spacing to enhance airflow and reduce humidity."
+  ],
+  "Root Rot": [
+    "Stop watering and let the soil dry; repot into fresh, well-draining soil if roots are rotting.",
+    "Improve drainage and avoid waterlogged conditions.",
+    "Use pots with drainage holes to prevent excess moisture buildup.",
+    "Sterilize tools and containers before replanting to avoid fungal contamination.",
+    "Trim damaged roots and apply fungicide before replanting."
+  ],
+  "Fusarium Wilt": [
+    "Remove and destroy heavily infected plants; use resistant varieties where possible.",
+    "Solarize the soil and avoid replanting susceptible crops in the same spot for a season.",
+    "Water in the morning to allow soil to dry before nightfall.",
+    "Use disease-free seeds and sanitize tools regularly.",
+    "Add organic compost to strengthen plant immunity."
+  ],
+  "Nutrient Deficiency (General)": [
+    "Add balanced compost or a slow-release organic fertilizer to the soil.",
+    "Perform a soil test to identify specific deficiencies (e.g., nitrogen, iron, magnesium).",
+    "Use liquid fertilizer for faster nutrient absorption in emergencies.",
+    "Mulch the soil to retain nutrients and moisture.",
+    "Ensure pH is balanced (6.0–7.0) for optimal nutrient uptake."
+  ],
+  "Nitrogen Deficiency": [
+    "Apply a nitrogen-rich organic fertilizer such as blood meal or composted manure.",
+    "Mulch with nitrogen-rich green materials (e.g., grass clippings).",
+    "Use fish emulsion as a quick nitrogen booster.",
+    "Prune old leaves to allow nutrients to reach new growth.",
+    "Avoid overwatering, which can wash away soil nitrogen."
+  ],
+  "Iron Chlorosis": [
+    "Lower soil pH for iron-absorbing plants by adding elemental sulfur or organic matter like peat moss.",
+    "Use chelated iron as a foliar spray for quick correction.",
+    "Avoid overwatering as it reduces oxygen and iron uptake.",
+    "Plant iron-efficient species in high-pH soils.",
+    "Mulch with compost to maintain steady nutrient availability."
+  ],
+  "Mosaic Virus": [
+    "Remove and destroy infected plants; control aphid vectors.",
+    "Sanitize tools and practice good hygiene to prevent spread.",
+    "Avoid planting near susceptible crops like cucumbers or tomatoes.",
+    "Use virus-free seeds and resistant varieties.",
+    "Disinfect hands and tools after handling infected plants."
+  ],
+  "Thrips": [
+    "Use sticky traps and spray insecticidal soap on affected areas.",
+    "Introduce predatory insects like minute pirate bugs where possible.",
+    "Remove and destroy infested buds and flowers.",
+    "Avoid using excessive nitrogen fertilizers.",
+    "Regularly inspect new growth and buds for early signs."
+  ],
+  "Whiteflies": [
+    "Use yellow sticky traps and spray with neem oil to control populations.",
+    "Remove heavily infested leaves and improve air circulation.",
+    "Introduce natural predators like ladybugs or parasitic wasps.",
+    "Vacuum adult whiteflies gently to reduce numbers.",
+    "Avoid excessive fertilizer, which encourages lush growth attractive to whiteflies."
+  ],
+  "Scale Insects": [
+    "Gently remove scales with a cotton swab dipped in rubbing alcohol.",
+    "Apply horticultural oil to suffocate remaining pests.",
+    "Prune heavily infested stems for better control.",
+    "Introduce beneficial insects like parasitic wasps.",
+    "Regularly inspect leaf joints and stems for reinfestation."
+  ],
+  "Powdery Mildew (Severe)": [
+    "Prune to increase airflow and remove heavily infected tissue.",
+    "Apply milk spray (1 part milk to 9 parts water) weekly as a preventive treatment.",
+    "Avoid high humidity by spacing plants properly.",
+    "Disinfect tools and pots after pruning infected plants.",
+    "Consider resistant varieties for long-term prevention."
+  ]
+}

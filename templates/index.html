@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LeafCare | AI Plant Health Assistant</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: linear-gradient(135deg, #e8f5e9, #f1f8f5);
+      color: #2d3748;
+      overflow-x: hidden;
+    }
+    .glass {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(14px);
+      border-radius: 1rem;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+    }
+    .btn-primary {
+      background: #16a34a;
+      color: white;
+      font-weight: 600;
+      border-radius: 0.75rem;
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      background: #15803d;
+      transform: translateY(-1px);
+    }
+    .btn-secondary {
+      background: #facc15;
+      color: #1f2937;
+      font-weight: 600;
+      border-radius: 0.75rem;
+      transition: all 0.3s ease;
+    }
+    .btn-secondary:hover {
+      background: #eab308;
+      transform: translateY(-1px);
+    }
+    .loading-spinner {
+      border: 3px solid #d1d5db;
+      border-top: 3px solid #16a34a;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+      display: inline-block;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    #heatmapOverlay {
+      position: absolute;
+      inset: 0;
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.45;
+      pointer-events: none;
+      border-radius: 1rem;
+    }
+    .chatbot-widget {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 350px;
+      height: 480px;
+      background: white;
+      border-radius: 1rem;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      z-index: 50;
+      transition: all 0.3s ease;
+    }
+    .chatbot-toggle {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #16a34a;
+      color: white;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+      z-index: 60;
+      transition: all 0.3s ease;
+    }
+    .chatbot-toggle:hover {
+      background: #15803d;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+
+<body class="antialiased">
+  <!-- Header -->
+  <header class="text-center py-10">
+    <h1 class="text-5xl font-bold text-green-700">🌿 LeafCare</h1>
+    <p class="text-gray-600 mt-3 text-lg">AI-Powered Plant Health Detection and Expert Assistance</p>
+  </header>
+
+  <!-- Main Section -->
+  <main class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 px-6 pb-16">
+    <!-- Upload Section -->
+    <section class="glass p-8">
+      <h2 class="text-2xl font-semibold text-green-800 mb-4">Upload a Leaf Image 🍃</h2>
+      <form id="uploadForm" enctype="multipart/form-data" class="space-y-5">
+        <input type="file" id="leafFile" name="leaf_image" accept="image/*" required
+          class="block w-full text-sm text-gray-600 
+                 file:mr-4 file:py-2 file:px-4 
+                 file:rounded-full file:border-0 
+                 file:bg-green-100 file:text-green-700 hover:file:bg-green-200 cursor-pointer" />
+
+        <div id="imageContainer" class="relative bg-gray-50 border border-gray-200 rounded-2xl flex justify-center items-center h-64 overflow-hidden">
+          <img id="uploadedImage" src="" alt="Leaf Preview" class="hidden object-contain max-h-full rounded-xl" />
+          <p id="previewText" class="text-gray-400 text-sm">Upload your plant leaf to analyze</p>
+          <div id="heatmapOverlay"></div>
+        </div>
+
+        <div class="flex gap-3">
+          <button id="toggleHeatmap" type="button" disabled class="flex-1 btn-secondary py-2">
+            Toggle Heatmap
+          </button>
+          <button id="submitButton" type="submit" class="flex-1 btn-primary py-2">
+            Analyze Leaf
+          </button>
+        </div>
+
+        <div id="loadingIndicator" class="hidden text-center mt-3">
+          <span class="loading-spinner"></span>
+          <span class="ml-2 text-green-700 font-medium">Analyzing your leaf...</span>
+        </div>
+      </form>
+
+      <div id="resultsSection" class="hidden mt-6 bg-green-50 border border-green-200 rounded-xl p-5">
+        <h3 class="text-xl font-semibold text-green-700 mb-3">Results</h3>
+        <div id="resultsContent"></div>
+      </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="glass p-8 flex flex-col justify-center">
+      <h2 class="text-3xl font-semibold text-green-800 mb-4">Plant Wellness. Simplified.</h2>
+      <p class="text-gray-600 leading-relaxed mb-6">
+        LeafCare uses advanced AI to identify plant diseases, measure leaf health, and recommend remedies instantly.
+        Upload a photo and let our model handle the rest.
+      </p>
+      <ul class="space-y-2 text-gray-700">
+        <li>✅ Identify over 15+ common plant diseases</li>
+        <li>✅ Get AI-suggested home remedies</li>
+        <li>✅ Understand plant health percentage</li>
+        <li>✅ Chat with LeafBot for custom tips</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Chatbot Floating Widget -->
+  <div class="chatbot-toggle" id="chatbotToggle">💬</div>
+  <div class="chatbot-widget hidden" id="chatbotWidget">
+    <div class="flex items-center justify-between bg-green-600 text-white px-4 py-3">
+      <h4 class="font-semibold">LeafBot Assistant</h4>
+      <button id="closeChatbot" class="text-xl hover:opacity-75">&times;</button>
+    </div>
+    <div id="chatWindow" class="flex-grow p-3 overflow-y-auto bg-gray-50 space-y-3">
+      <div class="flex justify-start">
+        <div class="bg-green-100 text-green-800 p-2 rounded-lg text-sm max-w-xs shadow-sm">
+          Hi there! I’m LeafBot 🌱 Ask me how to care for your plants!
+        </div>
+      </div>
+    </div>
+    <form id="chatForm" class="flex border-t border-gray-200">
+      <input id="chatInput" type="text" placeholder="Ask your question..." required
+        class="flex-grow p-2 border-0 focus:ring-0 text-sm">
+      <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-4">Send</button>
+    </form>
+  </div>
+
+  <footer class="text-center py-6 text-gray-500 text-sm">
+    © 2025 LeafCare | Built with ❤️ Flask & TensorFlow Lite
+  </footer>
+
+  <!-- JavaScript Logic -->
+  <script>
+    const uploadForm = document.getElementById('uploadForm');
+    const leafFile = document.getElementById('leafFile');
+    const uploadedImage = document.getElementById('uploadedImage');
+    const previewText = document.getElementById('previewText');
+    const heatmapOverlay = document.getElementById('heatmapOverlay');
+    const toggleHeatmapBtn = document.getElementById('toggleHeatmap');
+    const submitButton = document.getElementById('submitButton');
+    const resultsSection = document.getElementById('resultsSection');
+    const resultsContent = document.getElementById('resultsContent');
+    const loadingIndicator = document.getElementById('loadingIndicator');
+    const chatWindow = document.getElementById('chatWindow');
+    const chatInput = document.getElementById('chatInput');
+    const chatForm = document.getElementById('chatForm');
+    const chatbotToggle = document.getElementById('chatbotToggle');
+    const chatbotWidget = document.getElementById('chatbotWidget');
+    const closeChatbot = document.getElementById('closeChatbot');
+    
+    let isHeatmapVisible = false, lastPredictionData = null;
+
+    leafFile.addEventListener('change', function() {
+      const file = this.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = e => {
+        uploadedImage.src = e.target.result;
+        uploadedImage.classList.remove('hidden');
+        previewText.classList.add('hidden');
+        toggleHeatmapBtn.disabled = true;
+      };
+      reader.readAsDataURL(file);
+    });
+
+    toggleHeatmapBtn.addEventListener('click', () => {
+      if (!lastPredictionData) return;
+      isHeatmapVisible = !isHeatmapVisible;
+      heatmapOverlay.style.backgroundImage = isHeatmapVisible
+        ? `url('${lastPredictionData.heatmap_overlay}')` : 'none';
+      toggleHeatmapBtn.textContent = isHeatmapVisible ? 'Hide Heatmap' : 'Show Heatmap';
+    });
+
+    uploadForm.addEventListener('submit', async e => {
+      e.preventDefault();
+      submitButton.disabled = true;
+      loadingIndicator.classList.remove('hidden');
+      resultsSection.classList.add('hidden');
+      const formData = new FormData(uploadForm);
+
+      try {
+        const res = await fetch('/predict', { method: 'POST', body: formData });
+        const data = await res.json();
+        if (res.ok) {
+          lastPredictionData = data;
+          const pred = data.prediction;
+          const remedies = pred.remedies.map(r => `<li class='ml-4 list-disc text-sm text-gray-700'>${r}</li>`).join('');
+          resultsContent.innerHTML = `
+            <p class='font-semibold text-red-700'>Disease: ${pred.label}</p>
+            <p class='text-green-700'>Confidence: ${pred.confidence}</p>
+            <div class='w-full bg-gray-200 rounded-full h-2 my-2'>
+              <div class='h-2 rounded-full ${parseFloat(pred.health_index) > 50 ? 'bg-green-500' : 'bg-red-400'}' style='width:${pred.health_index}'></div>
+            </div>
+            <p class='font-semibold text-green-800'>Health Index: ${pred.health_index}</p>
+            <ul class='mt-2'>${remedies}</ul>`;
+          resultsSection.classList.remove('hidden');
+          toggleHeatmapBtn.disabled = false;
+          isHeatmapVisible = true;
+          heatmapOverlay.style.backgroundImage = `url('${data.heatmap_overlay}')`;
+          toggleHeatmapBtn.textContent = 'Hide Heatmap';
+        } else alert('Error: ' + (data.error || 'Prediction failed'));
+      } catch {
+        alert('Network error. Please try again.');
+      } finally {
+        submitButton.disabled = false;
+        loadingIndicator.classList.add('hidden');
+      }
+    });
+
+    // Chatbot logic
+    chatbotToggle.onclick = () => chatbotWidget.classList.toggle('hidden');
+    closeChatbot.onclick = () => chatbotWidget.classList.add('hidden');
+    chatForm.addEventListener('submit', async e => {
+      e.preventDefault();
+      const msg = chatInput.value.trim();
+      if (!msg) return;
+      appendChat('user', msg);
+      chatInput.value = '';
+      try {
+        const res = await fetch('/chat', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: msg })
+        });
+        const data = await res.json();
+        appendChat('bot', data.response);
+      } catch {
+        appendChat('bot', 'Sorry, something went wrong.');
+      }
+    });
+    function appendChat(sender, text) {
+      const div = document.createElement('div');
+      div.className = sender === 'user' ? 'flex justify-end' : 'flex justify-start';
+      const bubble = document.createElement('div');
+      bubble.className = sender === 'user'
+        ? 'bg-green-600 text-white p-2 rounded-lg text-sm max-w-xs'
+        : 'bg-green-100 text-green-800 p-2 rounded-lg text-sm max-w-xs';
+      bubble.textContent = text;
+      div.appendChild(bubble);
+      chatWindow.appendChild(div);
+      chatWindow.scrollTop = chatWindow.scrollHeight;
+    }
+  </script>
+</body>
+</html>
